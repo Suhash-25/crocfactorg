@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crocodile Facts</title>
+    <style>
+        body {
+            background-color: #e0f7e0; /* Light green background */
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .fact-display {
+            margin: 20px 0;
+            font-size: 1.5em;
+            transition: opacity 0.5s ease-in-out;
+            opacity: 1;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50; /* Green button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        .icons {
+            margin-top: 20px;
+        }
+
+        .icon {
+            width: 50px; /* Adjust size as needed */
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Crocodile Facts</h1>
+        <div id="fact-display" class="fact-display"></div>
+        <button id="random-fact-btn">Show Random Fact</button>
+        <button id="twitter-share-btn">Share on Twitter</button>
+        <div class="icons">
+            <img src="crocodile-icon.png" alt="Crocodile Icon" class="icon">
+            <img src="crocodile-image.jpg" alt="Crocodile" class="icon">
+            <!-- Add more icons or images as needed -->
+        </div>
+    </div>
+    <script>
+        const facts = [
+            "Crocodiles can live for over 70 years in the wild.",
+            "They have the strongest bite of any animal, with a force of over 3,700 pounds per square inch.",
+            "Crocodiles can hold their breath underwater for up to an hour.",
+            "They are more closely related to birds than to other reptiles.",
+            "Crocodiles can run on land at speeds of up to 20 miles per hour for short distances.",
+            "Their eyes, ears, and nostrils are located on the top of their heads, allowing them to see and breathe while mostly submerged.",
+            "Crocodiles are cold-blooded, meaning their body temperature is regulated by their environment.",
+            "They have a unique way of communicating, using a range of vocalizations, including growls and hisses.",
+            "Crocodiles can swim at speeds of up to 15 miles per hour in water.",
+            "They are known to be highly territorial and will defend their territory aggressively.",
+            "Crocodiles can consume up to half of their body weight in a single meal.",
+            "Their skin is covered in tough, scaly armor that provides protection from predators.",
+            "Crocodiles can regenerate lost teeth, replacing them throughout their lives.",
+            "They have a specialized heart that allows them to slow their metabolism while underwater.",
+            "Some species of crocodiles can even climb trees to bask in the sun or escape danger."
+        ];
+
+        document.getElementById('random-fact-btn').addEventListener('click', function() {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            const factDisplay = document.getElementById('fact-display');
+            factDisplay.style.opacity = 0; // Fade out
+            setTimeout(() => {
+                factDisplay.textContent = facts[randomIndex];
+                factDisplay.style.opacity = 1; // Fade in
+            }, 500);
+        });
+
+        document.getElementById('twitter-share-btn').addEventListener('click', function() {
+            const fact = document.getElementById('fact-display').textContent;
+            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(fact)}`;
+            window.open(twitterUrl, '_blank');
+        });
+    </script>
+</body>
+</html>
